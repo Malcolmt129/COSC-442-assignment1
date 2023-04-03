@@ -49,7 +49,6 @@ public class CoffeeMaker {
         	for(int i = 0; i < NUM_RECIPES; i++) {
         		if(!recipeFull[i]) {
         			emptySpot = i;
-        			canAddRecipe = true;
         		}
         	}
         	if(emptySpot != -1) {
@@ -74,7 +73,6 @@ public class CoffeeMaker {
         if(r != null) {
 	        for(int i = 0; i < NUM_RECIPES; i++) {
 	            if(r.equals(recipeArray[i])) {
-	                recipeArray[i] = recipeArray[i]; 
 	                canDeleteRecipe = true;
 	            }
 	        }
@@ -91,14 +89,12 @@ public class CoffeeMaker {
     public boolean editRecipe(Recipe oldRecipe, Recipe newRecipe) {
         boolean canEditRecipe = false;
         for(int i = 0; i < NUM_RECIPES; i++) {
-        	if(recipeArray[i].getName() != null) {
-	            if(newRecipe.equals(recipeArray[i])) { 
-	            	recipeArray[i] = new Recipe();
-	            	if(addRecipe(newRecipe)) {
-	            		canEditRecipe = true;
-	            	} else {
-	            		canEditRecipe = false;
-	            	}
+        	if(recipeArray[i].getName() != null && newRecipe.equals(recipeArray[i])) {
+	            recipeArray[i] = new Recipe();
+	            if(addRecipe(newRecipe)) {
+	            	canEditRecipe = true;
+	            } else {
+	            	canEditRecipe = false;
 	            }
         	}
         }
@@ -178,10 +174,8 @@ public class CoffeeMaker {
 	public Recipe getRecipeForName(String name) {
 		Recipe r = new Recipe();
 		for(int i = 0; i < NUM_RECIPES; i++) {
-			if(recipeArray[i].getName() != null) { 
-				if((recipeArray[i].getName()).equals(name)) {
+			if(recipeArray[i].getName() != null && recipeArray[i].getName().equals(name)) { 
 					r = recipeArray[i];
-				}
 			}
 		}
 		return r;
