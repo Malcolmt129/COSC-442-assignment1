@@ -25,7 +25,7 @@ public class Recipe {
      * @param amtChocolate int
      */
     public void setAmtChocolate(int amtChocolate) {
-    	if(amtChocolate >= 0) {
+    	if(amtChocolate > -1) {
     		this.amtChocolate = amtChocolate;
     	}
     	else {

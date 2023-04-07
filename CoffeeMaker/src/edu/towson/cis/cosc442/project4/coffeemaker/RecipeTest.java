@@ -43,9 +43,14 @@ public class RecipeTest {
 	public void testSetAmtCoffee() {
         recipe.setAmtCoffee(2);
         assertEquals(2, recipe.getAmtCoffee());
+        assertNotEquals(0, recipe.getAmtCoffee());
         
         recipe.setAmtCoffee(-2);
         assertEquals(0, recipe.getAmtCoffee());
+        
+        recipe.setAmtCoffee(-1);
+        assertEquals(0, recipe.getAmtCoffee());
+        
 	}
 
 	@Test
