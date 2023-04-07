@@ -81,10 +81,25 @@ public class CoffeeMakerTest {
 	    @Test
 	    public void testAddInventory() {
 	        assertTrue(coffeeMaker.addInventory(2, 2, 2, 2));
+	        assertEquals(17, coffeeMaker.checkInventory().getCoffee()); //mutation check
+	        assertEquals(17, coffeeMaker.checkInventory().getMilk());//mutation check
+	        assertEquals(17, coffeeMaker.checkInventory().getSugar());//mutation check
+	        assertEquals(17, coffeeMaker.checkInventory().getChocolate());//mutation check
+	        
 	        assertFalse(coffeeMaker.addInventory(-2, 2, 2, 2)); // negative coffee amount
+	        assertNotEquals(true, coffeeMaker.addInventory(-1, 2, 2, 2));//mutation check
+	        
 	        assertFalse(coffeeMaker.addInventory(2, -2, 2, 2)); // negative milk amount
+	        assertNotEquals(true, coffeeMaker.addInventory(2, -1, 2, 2));//mutation check
+	        
+	        
 	        assertFalse(coffeeMaker.addInventory(2, 2, -2, 2)); // negative sugar amount
+	        assertNotEquals(true, coffeeMaker.addInventory(2, 2, -1, 2));//mutation check
+	        
 	        assertFalse(coffeeMaker.addInventory(2, 2, 2, -2)); // negative chocolate amount
+	        assertNotEquals(true, coffeeMaker.addInventory(2, 2, 2, -1));//mutation check
+	        
+	        
 	    }
 
 	    @Test
@@ -98,8 +113,13 @@ public class CoffeeMakerTest {
 	    
 	    @Test
 	    public void testMakeCoffee() {
-	        coffeeMaker.addRecipe(recipe1);
-	        assertTrue(coffeeMaker.makeCoffee(recipe1, 100) == 50);
+	        coffeeMaker.addRecipe(recipe2);
+	        assertTrue(coffeeMaker.makeCoffee(recipe2, 100) == 25);
+	        assertEquals(12,coffeeMaker.checkInventory().getCoffee());
+	        
+	        assertEquals(14,coffeeMaker.checkInventory().getMilk());
+	        assertEquals(14,coffeeMaker.checkInventory().getSugar());
+	        assertEquals(14,coffeeMaker.checkInventory().getChocolate());
 	    }
 	    
 	    @Test

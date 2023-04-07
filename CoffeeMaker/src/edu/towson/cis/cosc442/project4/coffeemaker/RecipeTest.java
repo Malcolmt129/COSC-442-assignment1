@@ -32,6 +32,10 @@ public class RecipeTest {
         
         recipe.setAmtChocolate(-2);
         assertEquals(0, recipe.getAmtChocolate());
+        
+        recipe.setAmtChocolate(-1);
+        assertNotEquals(-1, recipe.getAmtChocolate());
+        
 	}
 
 	@Test
@@ -43,13 +47,12 @@ public class RecipeTest {
 	public void testSetAmtCoffee() {
         recipe.setAmtCoffee(2);
         assertEquals(2, recipe.getAmtCoffee());
-        assertNotEquals(0, recipe.getAmtCoffee());
         
         recipe.setAmtCoffee(-2);
         assertEquals(0, recipe.getAmtCoffee());
         
         recipe.setAmtCoffee(-1);
-        assertEquals(0, recipe.getAmtCoffee());
+        assertNotEquals(-1, recipe.getAmtCoffee());
         
 	}
 
@@ -65,6 +68,9 @@ public class RecipeTest {
         
         recipe.setAmtMilk(-2);
         assertEquals(0, recipe.getAmtMilk());
+        
+        recipe.setAmtMilk(-1);
+        assertNotEquals(-1, recipe.getAmtMilk());
 	}
 
 	@Test
@@ -80,6 +86,9 @@ public class RecipeTest {
         
         recipe.setAmtSugar(-2);
         assertEquals(0, recipe.getAmtSugar());
+        
+        recipe.setAmtSugar(-1);
+        assertNotEquals(-1, recipe.getAmtSugar());
 	}
 
 	@Test
@@ -105,6 +114,9 @@ public class RecipeTest {
         
         recipe.setPrice(-2);
         assertEquals(0, recipe.getPrice());
+        
+        recipe.setPrice(-1);
+        assertNotEquals(-1, recipe.getPrice());
 	}
 
 	@Test

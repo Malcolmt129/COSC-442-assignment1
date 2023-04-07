@@ -108,11 +108,10 @@ public class CoffeeMaker {
     
      * @return boolean */
     public boolean addInventory(int amtCoffee, int amtMilk, int amtSugar, int amtChocolate) {
-        boolean canAddInventory = true;
-        if(amtCoffee < 0 || amtMilk < 0 || amtSugar < 0 || amtChocolate < 0) { 
-            canAddInventory = false;
-        }
-        else {
+        boolean canAddInventory = false;
+        if(amtCoffee > -1 && amtMilk > -1 && amtSugar > -1 && amtChocolate > -1) { 
+            canAddInventory = true;
+            
 	        inventory.setCoffee(inventory.getCoffee() + amtCoffee);
 	        inventory.setMilk(inventory.getMilk() + amtMilk);
 	        inventory.setSugar(inventory.getSugar() + amtSugar);
@@ -137,15 +136,15 @@ public class CoffeeMaker {
     
      * @return int */
     public int makeCoffee(Recipe r, int amtPaid) {
-        boolean canMakeCoffee = true;
-        if(amtPaid < r.getPrice()) {
-            canMakeCoffee = false;
+        boolean canMakeCoffee = false;
+        if(amtPaid >= r.getPrice()) {
+            canMakeCoffee = true;
         }
-        if(!inventory.enoughIngredients(r)) {
-            canMakeCoffee = false;
+        if(inventory.enoughIngredients(r)) {
+            canMakeCoffee = true;
         }
         if(canMakeCoffee) {
-	        inventory.setCoffee(inventory.getCoffee() + r.getAmtCoffee()); 
+	        inventory.setCoffee(inventory.getCoffee() - r.getAmtCoffee()); 
 	        inventory.setMilk(inventory.getMilk() - r.getAmtMilk());
 	        inventory.setSugar(inventory.getSugar() - r.getAmtSugar());
 	        inventory.setChocolate(inventory.getChocolate() - r.getAmtChocolate());

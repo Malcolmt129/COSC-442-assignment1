@@ -47,6 +47,9 @@ public class InventoryTest {
 	    
 	    inv.setChocolate(-10);
 	    assertEquals(0, inv.getChocolate());
+	    
+	    inv.setChocolate(-1);
+	    assertNotEquals(-1, inv.getChocolate());
 	}
 
 	@Test
@@ -61,6 +64,9 @@ public class InventoryTest {
 	    
 	    inv.setCoffee(-10);
 	    assertEquals(0, inv.getCoffee());
+	    
+	    inv.setCoffee(-1);
+        assertNotEquals(-1, inv.getCoffee());
 	}
 
 	@Test
@@ -75,6 +81,9 @@ public class InventoryTest {
 	    
 	    inv.setMilk(-10);
 	    assertEquals(0, inv.getMilk());
+	    
+	    inv.setMilk(-1);
+        assertNotEquals(-1, inv.getMilk());
 	}
 
 	@Test
@@ -89,6 +98,9 @@ public class InventoryTest {
 	    
 	    inv.setSugar(-10);
 	    assertEquals(0, inv.getSugar());
+	    
+	    inv.setSugar(-1);
+        assertNotEquals(-1, inv.getSugar());
 	}
 	
 	/*
@@ -103,6 +115,7 @@ public class InventoryTest {
 	    recipe.setAmtSugar(5);
 	    recipe.setAmtChocolate(5);
 	    assertTrue(inv.enoughIngredients(recipe));
+	    assertNotEquals(false, inv.enoughIngredients(recipe));
 	    
 	    Recipe recipe2 = new Recipe();
 	    recipe2.setAmtCoffee(20);
@@ -110,6 +123,49 @@ public class InventoryTest {
 	    recipe2.setAmtSugar(20);
 	    recipe2.setAmtChocolate(20);
 	    assertFalse(inv.enoughIngredients(recipe2));
+	    assertNotEquals(true, inv.enoughIngredients(recipe2));
+	    
+	    Recipe recipe3 = new Recipe();
+	    recipe3.setAmtCoffee(15);
+	    recipe3.setAmtMilk(5);
+	    recipe3.setAmtSugar(5);
+	    recipe3.setAmtChocolate(5);
+	    assertTrue(inv.enoughIngredients(recipe3));
+	    assertNotEquals(false, inv.enoughIngredients(recipe3));
+	    
+	    Recipe recipe4 = new Recipe();
+	    recipe4.setAmtCoffee(5);
+	    recipe4.setAmtMilk(15);
+	    recipe4.setAmtSugar(5);
+	    recipe4.setAmtChocolate(5);
+	    assertTrue(inv.enoughIngredients(recipe4));
+	    assertNotEquals(false, inv.enoughIngredients(recipe4));
+	    
+	    Recipe recipe5 = new Recipe();
+	    recipe5.setAmtCoffee(5);
+	    recipe5.setAmtMilk(15);
+	    recipe5.setAmtSugar(5);
+	    recipe5.setAmtChocolate(5);
+	    assertTrue(inv.enoughIngredients(recipe5));
+	    assertNotEquals(false, inv.enoughIngredients(recipe5));
+	    
+	    Recipe recipe6 = new Recipe();
+	    recipe6.setAmtCoffee(5);
+	    recipe6.setAmtMilk(5);
+	    recipe6.setAmtSugar(15);
+	    recipe6.setAmtChocolate(5);
+	    assertTrue(inv.enoughIngredients(recipe6));
+	    assertNotEquals(false, inv.enoughIngredients(recipe6));
+	    
+	    Recipe recipe7 = new Recipe();
+	    recipe7.setAmtCoffee(5);
+	    recipe7.setAmtMilk(5);
+	    recipe7.setAmtSugar(5);
+	    recipe7.setAmtChocolate(15);
+	    assertTrue(inv.enoughIngredients(recipe7));
+	    assertNotEquals(false, inv.enoughIngredients(recipe7));
+
+	    
 	}
 
 	@Test
